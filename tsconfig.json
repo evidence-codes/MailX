@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "ESNext", // Use ESNext module syntax
-    "target": "ES2016", // Specify ECMAScript target version
+    "module": "commonjs", // Use ESNext module syntax
+    "target": "es2016", // Specify ECMAScript target version
     "moduleResolution": "node", // Use Node module resolution
     "strict": true, // Enable all strict type-checking options
     "esModuleInterop": true, // Allows interop between CommonJS and ES modules
