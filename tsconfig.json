@@ -6,6 +6,9 @@
     "strict": true, // Enable all strict type-checking options
     "esModuleInterop": true, // Allows interop between CommonJS and ES modules
     "skipLibCheck": true, // Skip type checking for declaration files
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
   }
 }
