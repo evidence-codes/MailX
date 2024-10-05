@@ -1,10 +1,13 @@
 import express, { Express } from "express";
 import { initializeDatabase } from "./config/db.config";
+import ReminderRoutes from "./routes/reminder";
 
 const app: Express = express();
 const port = 3000;
 
 app.use(express.json());
+
+app.use("/reminders", ReminderRoutes);
 
 const startServer = () => {
   app.listen(port, () => {
