@@ -1,7 +1,7 @@
 import { AppDataSource } from "./data-source";
 // import seedDatabase from "../seed";
 
-const initializeDatabase = async () => {
+export const initializeDatabase = async () => {
   try {
     await AppDataSource.initialize();
     console.log("Data Source has been initialized!");
@@ -10,5 +10,3 @@ const initializeDatabase = async () => {
     console.error("Error during Data Source initialization:", error);
   }
 };
-
-initializeDatabase();
