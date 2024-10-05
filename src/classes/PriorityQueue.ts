@@ -10,6 +10,7 @@ export class PriorityQueue {
   // Method to add a reminder to the queue
   enqueue(reminder: Reminder) {
     this.heap.push(reminder);
+    console.log("Enqueued reminder:", reminder); // Log the reminder
     this.bubbleUp();
   }
 
@@ -22,9 +23,10 @@ export class PriorityQueue {
     }
 
     const root = this.heap[0];
-    this.heap[0] = this.heap.pop()!;
-    this.bubbleDown();
+    this.heap[0] = this.heap.pop()!; // Replace root with the last element
+    this.bubbleDown(); // Restore the heap property
 
+    console.log("Dequeued reminder:", root); // Log the dequeued reminder
     return root;
   }
 
@@ -36,6 +38,10 @@ export class PriorityQueue {
   contains(reminder: Reminder) {
     // Logic to check if the reminder is already in the queue
     return this.heap.some((r) => r.id === reminder.id);
+  }
+
+  length() {
+    return this.heap.length;
   }
 
   // Helper method to maintain the min-heap property when adding a new reminder

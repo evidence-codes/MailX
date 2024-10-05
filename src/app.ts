@@ -4,6 +4,7 @@ import ReminderRoutes from "./routes/reminder.routes";
 import { errorHandler } from "./middlewares/error.middleware";
 import cron from "node-cron";
 import Reminder from "./services/reminder.service";
+import { sendMail } from "./utils/emailHelper";
 
 const app: Express = express();
 const port = 3000;
@@ -13,13 +14,25 @@ app.use(express.json());
 app.use(errorHandler);
 
 // routes
+app.post("/email", async (req, res) => {
+  try {
+    const { recipientEmail, subject, body } = req.body;
+    const message = {
+      to: recipientEmail,
+      subject,
+      body,
+    };
+    await sendMail(message);
+    res.status(200).json({ message: "Email sent successfully" });
+  } catch (err: any) {
+    res.status(500).json({ "Failed to send email": err.message });
+  }
+});
 app.use("/reminders", ReminderRoutes);
 
-// cron job
-cron.schedule("* * * * *", async () => {
-  console.log("Processing reminders...");
+setInterval(async () => {
   await Reminder.processReminders();
-});
+}, 1000);
 
 const startServer = () => {
   app.listen(port, () => {
