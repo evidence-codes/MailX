@@ -9,3 +9,12 @@ export async function saveReminder(req: Request, res: Response) {
     res.status(500).json({ error: err.message });
   }
 }
+
+export async function getAllReminders(req: Request, res: Response) {
+  try {
+    const reminders = await Reminder.getAll();
+    res.status(200).json({ reminders });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+}

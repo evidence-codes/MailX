@@ -10,6 +10,10 @@ class ReminderService {
   save(data: any) {
     return this.reminders.saveReminder(data);
   }
+
+  getAll() {
+    return this.reminders.getAllReminders();
+  }
 }
 
 const reminderServiceInstance = new ReminderService();
