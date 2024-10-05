@@ -1,6 +1,6 @@
 import express, { Express } from "express";
 import { initializeDatabase } from "./config/db.config";
-import ReminderRoutes from "./routes/reminder";
+import ReminderRoutes from "./routes/reminder.routes";
 
 const app: Express = express();
 const port = 3000;

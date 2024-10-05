@@ -1,5 +1,5 @@
 import { AppDataSource } from "../config/data-source";
-import { Reminder } from "../entities/Reminders";
+import { Reminder } from "../entities/reminder.entity";
 
 const reminderRepository = AppDataSource.getRepository(Reminder);
 
