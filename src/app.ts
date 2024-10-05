@@ -1,11 +1,14 @@
 import express, { Express } from "express";
 import { initializeDatabase } from "./config/db.config";
 import ReminderRoutes from "./routes/reminder.routes";
+import { errorHandler } from "./middlewares/error.middleware";
 
 const app: Express = express();
 const port = 3000;
 
+// middlewares
 app.use(express.json());
+app.use(errorHandler);
 
 app.use("/reminders", ReminderRoutes);
 

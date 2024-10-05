@@ -1,25 +1,37 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import Reminder from "../services/reminder.service";
 
-export async function saveReminder(req: Request, res: Response) {
+export async function saveReminder(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const reminder = await Reminder.save(req.body);
     res.status(200).json({ message: "Reminder saved successfully", reminder });
   } catch (err: any) {
-    res.status(500).json({ error: err.message });
+    next(err);
   }
 }
 
-export async function getAllReminders(req: Request, res: Response) {
+export async function getAllReminders(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const reminders = await Reminder.getAll();
     res.status(200).json({ reminders });
   } catch (err: any) {
-    res.status(500).json({ error: err.message });
+    next(err);
   }
 }
 
-export async function updateReminderStatus(req: Request, res: Response) {
+export async function updateReminderStatus(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const id = parseInt(req.params.id, 10);
     const { status } = req.params;
@@ -34,6 +46,6 @@ export async function updateReminderStatus(req: Request, res: Response) {
       updatedReminder,
     });
   } catch (err: any) {
-    res.status(500).json({ error: err.message });
+    next(err);
   }
 }
