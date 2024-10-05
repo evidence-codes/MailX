@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Reminder from "../services/Reminder.service";
+import Reminder from "../services/reminder.service";
 
 export async function saveReminder(req: Request, res: Response) {
   try {
