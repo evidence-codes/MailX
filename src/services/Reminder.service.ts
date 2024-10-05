@@ -14,6 +14,10 @@ class ReminderService {
   getAll() {
     return this.reminders.getAllReminders();
   }
+
+  updateStatus(id: number, status: string) {
+    return this.reminders.updateReminderStatus(id, status);
+  }
 }
 
 const reminderServiceInstance = new ReminderService();

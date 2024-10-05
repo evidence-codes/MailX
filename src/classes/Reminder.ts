@@ -28,4 +28,19 @@ export default class Reminders {
       }
     }
   }
+
+  async updateReminderStatus(id: number, status: string) {
+    try {
+      const updatedReminder = await reminderRepository.update(
+        { id },
+        { status }
+      );
+      return updatedReminder;
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error("Error updating reminder status:", err.message);
+        throw new Error(err.message);
+      }
+    }
+  }
 }
